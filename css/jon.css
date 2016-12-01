@@ -32,7 +32,10 @@ html, body {
 #dancecheckbox, #danceboxlabel {
 	display: inline;
 	line-height: 2em;
-	/*text-align: bottom; */
+}
+
+#dancecheckbox {
+	vertical-align: text-top;
 }
 
 
@@ -43,7 +46,7 @@ table {
 }
 
 thead {
-	
+	color: #ff2283;
 }
 
 
@@ -99,7 +102,7 @@ span.block {
 }
 
 span.festival {
-	color: gray;
+
 	position: relative;
 	left: 0;
 

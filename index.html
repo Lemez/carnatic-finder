@@ -3,35 +3,19 @@
 <head>
 	<title>Madras Music Season 2016-17</title>
 	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
-       <!-- script type="text/javascript" src="/bower_components/angular-bindonce/bindonce.js"> /script   -->
-       <!-- script type="text/javascript" src="../bower_components/moment/moment.js" /script> -->
-  <!-- script type="text/javascript" src="../bower_components/moment-range/lib/moment-range.js">/script -->
+
      <link rel="stylesheet"  type="text/css" href="css/bootstrap.min.css">
      <link rel="stylesheet" type="text/css" href="css/angularjs-datetime-picker.css">
     <link rel="stylesheet" type="text/css" href="css/jon.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/angular-mighty-datepicker.css"> -->
 
 
 	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
-        <script type="text/javascript" src="js/angular.js"></script>
-
+    <script type="text/javascript" src="js/angular.js"></script>
     <script type="text/javascript" src="js/basics/services/services.js"></script>
-
-     <!-- script type="text/javascript" src="js/angular-mighty-datepicker.js" /script -->
     <script type="text/javascript" src="js/basics/app.js"></script>
     <script type="text/javascript" src="js/angularjs-datetime-picker.min.js"></script>
-
      <script type="text/javascript" src="js/basics/controllers/filterController.js"></script>
-    <script type="text/javascript" src="js/basics/controllers/mainController.js"></script>
-     <!-- script type="text/javascript" src="js/basics/controllers/dateController.js" /script -->
-
-    
-   
-
-	
-	
-    
-   
+    <script type="text/javascript" src="js/basics/controllers/mainController.js"></script>   
 </head>
 
 <body>
@@ -46,25 +30,11 @@
         </div>
         
         <div id= 'checkboxdiv'>
-           <!--   <input id='musiccheckbox' type="checkbox" ng-model="filterService.activeFilters.concert"  />
-            <label id= 'musicboxlabel' for="musiccheckbox" class="control-label">Concerts only</label> -->
             <input id='dancecheckbox' type="checkbox" ng-model="filterService.activeFilters.specialevent"  />
             <label id= 'danceboxlabel' for="dancecheckbox" class="control-label">Dance & Special Events only</label>
-         
         </div>
-
-
-        <!-- <label for="locationComboBox" class="control-label">Venue</label>
-        <select id="locationComboBox" ng-model="filterService.activeFilters.location" >
-            <option ng-repeat="place in ['BVB Main Hall', 'BVB Mini Hall', 'Narada Gana Sabha Main Hall', 'Srinivasa Sastri Hall']">
-                {{place}}
-            </option>
-        </select> -->
-    
-
-
-      
      </div>
+
     <div id='content' ng-controller='MainController'>
         <table>
             <thead>
@@ -73,9 +43,7 @@
                     <th>Date</th>
                     <th>Location</th>
                     <th>Artists</th>
-               <!--      <th>Instrument</th> -->
                     <th>Dance & Special Events</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -102,7 +70,6 @@
                     {{concert.special}} 
                     </td>
                     <td class='info'>
-                    <!-- {{concert.info}}  -->
                          <span class='block invisible' ng-show='concert.specialevent==false'>
                         Concert
                         </span>
