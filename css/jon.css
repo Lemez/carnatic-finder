@@ -30,7 +30,7 @@ html, body {
 	font-size: 16px;
 }
 
-#dancecheckbox, #danceboxlabel {
+#dancecheckbox, #danceboxlabel, #artistbox, #artistboxlabel, #instbox, #instboxlabel {
 	display: inline;
 	line-height: 2em;
 }
@@ -89,6 +89,10 @@ background-image: -o-linear-gradient(top, #ffffff, #eeeeee);*/
 
 th {
 	text-align: center;
+}
+
+th.clickable {
+	cursor: pointer;
 }
 
 td {

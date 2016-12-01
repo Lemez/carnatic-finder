@@ -22,7 +22,23 @@
     <div id='selectors' ng-controller='FilterController'>
         <input id='searchbox' type='text' ng-model="filterService.searchText"  placeholder="Search Music Season"/>
 
+         <div id='artistsearch'>
+            <label id='artistboxlabel' for="artistbox" class="control-label">Featured Vocalist  </label>
+            <select id='artistbox' ng-model="filterService.activeFilters.all_show_artists" ng-false="">
+                <option></option>
+                <option ng-repeat="the_name in all_vocalists">{{the_name}}</option>
+            </select>
+        </div>
+        <div id='insttsearch'>
+            <label id='instboxlabel' for="instbox" class="control-label">By Instrument </label>
+            <select id='instbox' ng-model="filterService.activeFilters.all_show_instruments" bg-false="">
+            <option></option>
+            <option ng-repeat="inst in all_insts">{{inst}}</option>
+            </select>
+        </div>
+
         <div id='datepicker' ng-init="">
+
            <label id='datelabel' for="pickbox" class="control-label">Choose a Date</label>
             <input id='pickbox' ng-model="filterService.activeFilters.datetime" date-format="yyyy-MM-dd" datetime-picker date-only size="60" placeholder="Dec 1st to Jan 4th only" />
             <button ng-click="remove()">Click to reset </button>
@@ -33,15 +49,33 @@
             <input id='dancecheckbox' type="checkbox" ng-model="filterService.activeFilters.specialevent"  />
             <label id= 'danceboxlabel' for="dancecheckbox" class="control-label">Dance & Special Events only</label>
         </div>
+
+
      </div>
+
 
     <div id='content' ng-controller='MainController'>
         <table>
             <thead>
                 <tr>
-                    <th>Festival</th>
-                    <th>Date</th>
-                    <th>Location</th>
+                    <th class='clickable'>
+                        <span ng-click="sortOrder('festival')">Festival
+                            <span ng-show="direction.festival==true">&#x25B2;</span>
+                            <span ng-show="direction.festival==false">&#x25BC;</span>
+                        </span>
+                    </th>
+                    <th class='clickable'>
+                        <span ng-click="sortOrder('datetime')">Date
+                            <span ng-show="direction.datetime==true">&#x25B2;</span>
+                            <span ng-show="direction.datetime==false">&#x25BC;</span>
+                        </span>
+                    </th>
+                    <th class='clickable'>
+                        <span ng-click="sortOrder('location')">Location
+                            <span ng-show="direction.location==true">&#x25B2;</span>
+                            <span ng-show="direction.location==false">&#x25BC;</span>
+                         </span>
+                     </th>
                     <th>Artists</th>
                     <th>Dance & Special Events</th>
                 </tr>
@@ -76,7 +110,7 @@
                         <span class='block invisible' ng-hide='concert.specialevent==false'>
                          Dance & Special Events
                         </span>
-                    <span class='invisible'>{{concert.datetime | date}}</span>
+                    <span class='invisible'>{{concert.datetime | date}} {{concert.all_show_artists}} {{concert.all_show_instruments}} {{concert.lead_instrument}}</span>
                     </td>
 
                 </span>
