@@ -70,7 +70,7 @@ readfile.readlines.each do |line|
 				artist = {'name'=>'','instrument'=>''}
 				name,instrument = person.split("(")
 				artist['name'] = name.strip  
-				artist['instrument'] = instrument.gsub(')','').gsub('(','')
+				artist['instrument'] = instrument.gsub(')','').gsub('(','').strip
 				details['artists'] << artist
 
 				artist = {'name'=>'','instrument'=>''}
