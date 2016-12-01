@@ -237,6 +237,7 @@ angular.module("BasicApp").controller("MainController", function($scope, filterS
          
     }
 
+
     $scope.newConcert = null;
     $scope.addNew = function() {
         if ($scope.newConcert != null && $scope.newConcert != "") {
@@ -247,6 +248,9 @@ angular.module("BasicApp").controller("MainController", function($scope, filterS
             });
         }
      }
+
+     // Array.prototype.sort($scope.all_insts, function(a,b){return a<b});
+
      console.log($scope.all_artists);
      console.log($scope.all_insts);
      console.log($scope.all_vocalists);
