@@ -1,0 +1,153 @@
+html, body {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+#selectors {
+	
+	padding-bottom: 10px;
+	min-width: 100vw;
+	text-align: center;
+/*	background-color: rgba(255,0,0,0.05);*/
+}
+
+#selectors input#searchbox{
+	margin-top: 10vh;
+	min-width: 90vw;
+	margin-left: 1.5vw;
+	min-height: 9vh;
+	text-align: center;
+	font-size: 26px;
+/*	background-color: rgba(0,0,0,0.1);*/
+	color: black;
+
+
+}
+
+#checkboxdiv, #checkboxdiv label, #selectors label {
+	text-align: center;
+	font-size: 16px;
+}
+
+#dancecheckbox, #danceboxlabel {
+	display: inline;
+	line-height: 2em;
+	/*text-align: bottom; */
+}
+
+
+table {
+	max-width: 100vw;
+	border-top: 1px dotted black;
+	margin-top: 10px;
+}
+
+thead {
+	
+}
+
+
+tr {
+
+	margin: 10px 0 10px 0;
+	border-bottom: 1px solid gray;
+	padding-top: 10px;
+}
+
+tr:hover{
+color: #ff2283;
+}
+tr[tooltip]:hover:after{
+content: attr(tooltip);
+padding: 5px 20px 10px 2px;
+color: white;
+position: fixed;
+left: 0;
+width: 100vw;
+text-align: center;
+top:0;
+/*white-space: nowrap;*/
+z-index: 20;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+background-color: gray;
+/*-moz-box-shadow: 0px 0px 2px #c0c1c2;
+-webkit-box-shadow: 0px 0px 2px #c0c1c2;
+box-shadow: 0px 0px 2px #c0c1c2;
+background-image: -moz-linear-gradient(top, #ffffff, #eeeeee);
+background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ffffff),color-stop(1, #eeeeee));
+background-image: -webkit-linear-gradient(top, #ffffff, #eeeeee);
+background-image: -moz-linear-gradient(top, #ffffff, #eeeeee);
+background-image: -ms-linear-gradient(top, #ffffff, #eeeeee);
+background-image: -o-linear-gradient(top, #ffffff, #eeeeee);*/
+}
+
+th {
+	text-align: center;
+}
+
+td {
+	padding: 0 5px 0 5px;
+	min-width: 15vw;
+	/*max-width: 15vw;*/
+	text-align: center;
+}
+
+span.block {
+	display: block;
+}
+
+span.festival {
+	color: gray;
+	position: relative;
+	left: 0;
+
+}
+
+/*td.time {
+	width: 5vw;
+}*/
+
+#datepicker input, #datelabel {
+	text-align: center;
+	display: inline;
+}
+
+
+
+span.invisible{
+	display: block;
+	visibility: hidden;
+}
+
+td.artists {
+	display: block;
+	min-width: inherit;
+}
+
+span.artist, span.instrument {
+	display: block;
+}
+
+span.artist {
+	font-weight: 700;
+	border-bottom: 1px dotted gray;
+}
+
+span.instrument {
+	font-style: italic;
+}
+
+/*td span.artist:last-of-type {
+	border-bottom: none;
+}*/
+
+
+
+.location {
+	border-bottom: 1px dotted gray;
+}
+
+
+
