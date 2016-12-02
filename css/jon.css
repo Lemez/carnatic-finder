@@ -1,32 +1,71 @@
 html, body {
 	font-size: 16px;
 	line-height: 20px;
+	min-width: 100vw;
+}
+
+.left {
+float: left;
+}
+
+.right {
+float: right;
+}
+
+.half {
+	width: 50%;
+}
+
+.whole {
+	width: 100%;
 }
 
 #selectors {
 	
 	padding-bottom: 10px;
-	min-width: 100vw;
 	text-align: center;
 /*	background-color: rgba(255,0,0,0.05);*/
 }
 
 #selectors input#searchbox{
 	margin-top: 10vh;
-	min-width: 90vw;
 	margin-left: 1.5vw;
+
+	min-width: 90%;
 	min-height: 9vh;
+
 	text-align: center;
 	font-size: 26px;
 	font-style: italic;
-/*	background-color: rgba(0,0,0,0.1);*/
-	color: black;
 
+	color: black;
+}
+
+div#display-active-filters {
+	min-width: 90%;
+	min-height: 9vh;
+	text-align: center;
+	font-size: 1em;
+}
+
+span.active-filter-name {
+	margin-left: 5px;
+	color: pink;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.close-filter-x{
+	margin-right: 5px;
+	color: black;
+}
+
+.control-label {
 
 }
 
 #checkboxdiv, #checkboxdiv label, #selectors label {
-	text-align: center;
+/*	text-align: center;*/
 	font-size: 16px;
 }
 

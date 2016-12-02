@@ -12,7 +12,9 @@
 	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
     <script type="text/javascript" src="js/angular.js"></script>
     <script type="text/javascript" src="js/basics/services/services.js"></script>
+
     <script type="text/javascript" src="js/basics/app.js"></script>
+     <script type="text/javascript" src="js/basics/filters/filters.js"></script>
     <script type="text/javascript" src="js/angularjs-datetime-picker.min.js"></script>
      <script type="text/javascript" src="js/basics/controllers/filterController.js"></script>
     <script type="text/javascript" src="js/basics/controllers/mainController.js"></script>   
@@ -20,38 +22,75 @@
 
 <body>
     <div id='selectors' ng-controller='FilterController'>
-        <input id='searchbox' type='text' ng-model="filterService.searchText"  placeholder="Search Music Season"/>
-
-         <div id='artistsearch'>
-            <label id='artistboxlabel' for="artistbox" class="control-label">Featured Vocalist  </label>
-            <select id='artistbox' ng-model="filterService.activeFilters.all_show_artists" ng-false="">
-                <option></option>
-                <option ng-repeat="the_name in all_vocalists">{{the_name}}</option>
-            </select>
+         <div class='whole'>
+             <input id='searchbox' type='text' ng-model="filterService.searchText"  placeholder="Search Music Season"/>
+             <div id='display-active-filters'>
+                <span class='active-filter-name' ng-repeat="item in filterService.activeFilters">
+                    <span ng-click="popFromFilters(getKeyOf(item))" ng-hide="item=='' || item==null || item.trim()=='false'" >
+                        <span class="close-filter-x">X</span>
+                        {{item | dancify}}
+                     </span>
+                </span>
+             </div>
+              
         </div>
-        <div id='insttsearch'>
-            <label id='instboxlabel' for="instbox" class="control-label">By Instrument </label>
-            <select id='instbox' ng-model="filterService.activeFilters.all_show_instruments" bg-false="">
-            <option></option>
-            <option ng-repeat="inst in all_insts">{{inst}}</option>
-            </select>
-        </div>
-
-        <div id='datepicker' ng-init="">
-
-           <label id='datelabel' for="pickbox" class="control-label">Choose a Date</label>
-            <input id='pickbox' ng-model="filterService.activeFilters.datetime" date-format="yyyy-MM-dd" datetime-picker date-only size="60" placeholder="Dec 1st to Jan 4th only" />
-            <button ng-click="remove()">Click to reset </button>
-
-        </div>
+        <div id='resetbutton' class='whole'>
+                 <div class=''>
+                    <button ng-click="remove()">Click to reset </button>
+                </div>
+            </div>
         
-        <div id= 'checkboxdiv'>
-            <input id='dancecheckbox' type="checkbox" ng-model="filterService.activeFilters.specialevent"  />
-            <label id= 'danceboxlabel' for="dancecheckbox" class="control-label">Dance & Special Events only</label>
+
+        <div class='left half'>
+
+            <div id='datepicker' ng-init="">
+                 <div class='left half'>
+                    <label id='datelabel' for="pickbox" class="control-label">Choose a Date</label>
+                </div>
+                 <div class='left'>
+                    <input id='pickbox' ng-model="filterService.activeFilters.datetime" date-format="yyyy-MM-dd" datetime-picker date-only size="60" placeholder="Dec 1st to Jan 4th only" />
+                </div>
+            </div>
+
+           
+         
         </div>
 
+        <div class='right half'>
+            <div id='artistsearch'>
+                <div class='left half'>
+                    <label id='artistboxlabel' for="artistbox" class="control-label">Vocalist</label>
+                </div>
+                <div class='left'>
+                    <select id='artistbox' ng-model="filterService.activeFilters.all_show_artists" ng-false="">
+                        <option></option>
+                        <option ng-repeat="the_name in all_vocalists">{{the_name}}</option>
+                    </select>
+                </div>
+            </div>
 
-     </div>
+            <div id='insttsearch'>
+                <div class='left half'>
+                    <label id='instboxlabel' for="instbox" class="control-label">By Instrument </label>
+                </div>
+                <div class='left'>
+                    <select id='instbox' ng-model="filterService.activeFilters.all_show_instruments" bg-false="">
+                    <option></option>
+                    <option ng-repeat="inst in all_insts">{{inst}}</option>
+                    </select>
+                </div>
+            </div>
+            <div id= 'checkboxdiv'>
+                 <div class='left half'>
+                    <label id= 'danceboxlabel' for="dancecheckbox" class="control-label">Dance & Special Events only</label>
+                </div>
+                <div class='left'>
+                    <input id='dancecheckbox' type="checkbox" ng-model="filterService.activeFilters.specialevent" ng-false="" ng-click="toggleDanceFilter()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
 
     <div id='content' ng-controller='MainController'>
@@ -60,23 +99,29 @@
                 <tr>
                     <th class='clickable'>
                         <span ng-click="sortOrder('festival')">Festival
-                            <span ng-show="direction.festival==true">&#x25B2;</span>
-                            <span ng-show="direction.festival==false">&#x25BC;</span>
+                            <span ng-show="direction.active=='festival'">
+                                <span ng-show="direction.festival==false">&#x25B2;</span>
+                                <span ng-show="direction.festival==true">&#x25BC;</span>
+                            </span>
                         </span>
                     </th>
                     <th class='clickable'>
                         <span ng-click="sortOrder('datetime')">Date
-                            <span ng-show="direction.datetime==true">&#x25B2;</span>
-                            <span ng-show="direction.datetime==false">&#x25BC;</span>
+                             <span ng-show="direction.active=='datetime'">
+                                <span ng-show="direction.datetime==true">&#x25B2;</span>
+                                <span ng-show="direction.datetime==false">&#x25BC;</span>
+                            </span>
                         </span>
                     </th>
                     <th class='clickable'>
                         <span ng-click="sortOrder('location')">Location
-                            <span ng-show="direction.location==true">&#x25B2;</span>
-                            <span ng-show="direction.location==false">&#x25BC;</span>
+                            <span ng-show="direction.active=='location'">
+                                <span ng-show="direction.location==false">&#x25B2;</span>
+                                <span ng-show="direction.location==true">&#x25BC;</span>
+                            </span>
                          </span>
                      </th>
-                    <th>Artists</th>
+                    <th ng-show='filterService.activeFilters["specialevent"]=="" || filterService.activeFilters["specialevent"]==null'>Artists</th>
                     <th>Dance & Special Events</th>
                 </tr>
             </thead>
@@ -94,7 +139,7 @@
                       
                     <td class='location'>{{concert.location}}</td>
 
-                    <td class='artists' >
+                    <td class='artists' ng-show='filterService.activeFilters["specialevent"]=="" || filterService.activeFilters["specialevent"]==null'>
                         <span ng-repeat="artist in concert.artists">
                             <span class='instrument'>{{artist.instrument}}</span>
                             <span class='artist'>{{artist.name}}</span>

@@ -6,7 +6,8 @@ angular.module("BasicApp").controller("MainController", function($scope, filterS
     $scope.direction = {
         datetime:true,
         location:true,
-        festival:true
+        festival:true,
+        active:''
     }
 
     for (var i=0; i<$scope.concerts.length; i++){
@@ -27,6 +28,7 @@ angular.module("BasicApp").controller("MainController", function($scope, filterS
             else {return 0;}
         });
         $scope.direction[area] = !$scope.direction[area];
+         $scope.direction.active = area;
     }
 
 

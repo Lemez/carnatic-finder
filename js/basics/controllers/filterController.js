@@ -1,9 +1,35 @@
 app.controller("FilterController", function($scope, filterService) { 
     $scope.filterService = filterService;
+    $scope.dancefilter = false;
+
+    $scope.getKeyOf = function(item) { 
+    	var keys = Object.keys($scope.filterService.activeFilters);
+    	
+    	for (var i=0;i<keys.length;i++){
+
+    		if ($scope.filterService.activeFilters[keys[i]]==item) {
+    		
+    				return keys[i];
+    		}
+    	}
+    }
 
     $scope.remove = function() { 
     	$scope.filterService.activeFilters={};
     }
+
+    $scope.popFromFilters = function(area) { 
+    	delete $scope.filterService.activeFilters[area];
+    }
+
+    $scope.toggleDanceFilter = function(){
+    	 $scope.dancefilter =! $scope.dancefilter;
+
+    	 if ($scope.dancefilter ===false){
+    	 	$scope.popFromFilters(['specialevent']);
+    	}
+    }
+   
 
     $scope.concerts = AllConcerts;
     $scope.all_artists = [];  
